@@ -20,6 +20,10 @@ INSTALLED_APPS = [
 
     # 3rd party apps
     "rest_framework",
+
+    # Project apps
+    "event",
+    "ticket",
 ]
 
 MIDDLEWARE = [
