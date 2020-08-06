@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+
+  db_dev:
+    image: postgres:12.3
+    restart: on-failure
+    networks:
+      - main_dev
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ../db_data:/var/lib/postgresql/data
+    ports:
+      - 5429:5432
+
+  redis_dev:
+    image: redis:latest
+    networks:
+      - main_dev
+    expose:
+      - 6379
+    ports:
+      - 6380:6379
+networks:
+  main_dev:
