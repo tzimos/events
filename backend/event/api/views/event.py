@@ -14,4 +14,3 @@ class EventApiViewset(viewsets.ModelViewSet):
     """The event api view set."""
     serializer_class = EventSerializer
     queryset = Event.objects.include_tickets_aggregations().all()
-
