@@ -1,5 +1,8 @@
 from django.apps import AppConfig
 
 
-class EventsConfig(AppConfig):
+class EventConfig(AppConfig):
     name = "event"
+
+    def ready(self):
+        import event.signals.event
