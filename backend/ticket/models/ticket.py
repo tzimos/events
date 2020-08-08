@@ -5,8 +5,6 @@ from enum import Enum
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from event.models import Event
-
 
 class Ticket(models.Model):
     """Definition of the ticket model."""
@@ -30,13 +28,16 @@ class Ticket(models.Model):
         db_index=True
     )
     event = models.ForeignKey(
-        Event,
+        "event.Event",
         on_delete=models.CASCADE,
         related_name="tickets"
     )
     status = models.CharField(
         _("Status"),
         max_length=1,
-        default="R",
+        default=StatusChoices.O.name,
         choices=StatusChoices.get_choices(),
     )
+
+    def __str__(self):
+        return f"Ticket {self.id}"
