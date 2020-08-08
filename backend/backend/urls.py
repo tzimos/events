@@ -7,6 +7,7 @@ from django.urls import (
 
 api_urlpatterns = [
     path("events/", include("event.api.urls")),
+    path("tickets/", include("ticket.api.urls"))
 ]
 
 urlpatterns = [
@@ -18,5 +19,5 @@ if settings.DEBUG:
     import debug_toolbar
 
     urlpatterns.insert(0,
-        path("__debug__/", include(debug_toolbar.urls)),
-    )
+                       path("__debug__/", include(debug_toolbar.urls)),
+                       )
