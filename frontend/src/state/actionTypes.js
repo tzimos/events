@@ -5,3 +5,7 @@ export const USER_IS_AUTHENTICATED = "USER_IS_AUTHENTICATED";
 // Loading
 export const START_LOADING = "START_LOADING";
 export const STOP_LOADING = "STOP_LOADING";
+
+// Notifications
+export const PUSH_NOTICICATION = "PUSH_NOTICICATION";
+export const CLOSE_SNACKBAR = "CLOSE_SNACKBAR";
