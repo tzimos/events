@@ -1,3 +1,7 @@
 // Authentication
 export const USER_NOT_AUTHENTICATED = "USER_NOT_AUTHENTICATED";
 export const USER_IS_AUTHENTICATED = "USER_IS_AUTHENTICATED";
+
+// Loading
+export const START_LOADING = "START_LOADING";
+export const STOP_LOADING = "STOP_LOADING";
