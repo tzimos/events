@@ -18,6 +18,7 @@ import {
 import Routes from "./components/Routes";
 import history from "./lib/history";
 import Loading from "./components/Loading";
+import SnackBar from "./components/SnackBar";
 
 let theme = createMuiTheme({
   palette: {
@@ -62,6 +63,7 @@ class App extends React.PureComponent {
               <Routes/>
             </Router>
             <Loading/>
+            <SnackBar/>
           </MuiThemeProvider>
         </JssProvider>
       </React.Fragment>
