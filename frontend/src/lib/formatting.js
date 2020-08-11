@@ -15,3 +15,11 @@ export const formatDate = dateString => {
   const parsedDate = moment(dateString);
   return parsedDate.format("YYYY/MM/DD HH:mm:ss")
 }
+
+export const splitAndCapitalize = value => {
+  return value
+    .replace(/([A-Z])/g, " $1")
+    .replace(/^./, str => {
+      return str.toUpperCase();
+    });
+};
