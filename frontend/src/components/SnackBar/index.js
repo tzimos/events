@@ -33,17 +33,20 @@ class SnackBar extends React.PureComponent {
   render() {
     const {
       message,
-      open
+      autoHideDuration,
+      snackBarActions,
+      open,
     } = this.props;
 
     return (
       <React.Fragment>
         <DefaultSnackBar
-          autoHideDuration={5000}
+          autoHideDuration={autoHideDuration}
           open={open}
           onClose={this.onClose}
         >
           <SnackbarContent
+            action={snackBarActions}
             className={this.determineStatus()}
             message={<SnackBarMessage message={message}/>}/>
         </DefaultSnackBar>
@@ -59,12 +62,15 @@ SnackBar.propTypes = {
   message: PropTypes.string,
   open: PropTypes.bool,
   classes: PropTypes.object,
+  action: PropTypes.array,
 };
 
 const mapStateToProps = ({notifications}) => ({
   open: notifications.open,
   message: notifications.message,
-  status: notifications.status
+  status: notifications.status,
+  autoHideDuration: notifications.autoHideDuration,
+  snackBarActions: notifications.snackBarActions,
 });
 
 const mapDispatchToProps = dispatch => ({
