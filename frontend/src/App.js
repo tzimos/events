@@ -1,7 +1,8 @@
 import React from "react";
 import {Router} from "react-router-dom";
 import {
-  createMuiTheme, MuiThemeProvider,
+  createMuiTheme,
+  MuiThemeProvider,
   responsiveFontSizes,
   CssBaseline
 } from "@material-ui/core";
@@ -19,6 +20,8 @@ import Routes from "./components/Routes";
 import history from "./lib/history";
 import Loading from "./components/Loading";
 import SnackBar from "./components/SnackBar";
+import {MuiPickersUtilsProvider} from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
 
 let theme = createMuiTheme({
   palette: {
@@ -54,16 +57,17 @@ class App extends React.PureComponent {
       <React.Fragment>
         <JssProvider
           jss={jss}
-          generateClassName={generateClassName}
-        >
+          generateClassName={generateClassName}>
           <MuiThemeProvider
             theme={theme}>
-            <CssBaseline/>
-            <Router history={history}>
-              <Routes/>
-            </Router>
-            <Loading/>
-            <SnackBar/>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <CssBaseline/>
+              <Router history={history}>
+                <Routes/>
+              </Router>
+              <Loading/>
+              <SnackBar/>
+            </MuiPickersUtilsProvider>
           </MuiThemeProvider>
         </JssProvider>
       </React.Fragment>
