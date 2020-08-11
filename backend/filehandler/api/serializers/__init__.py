@@ -1,5 +1,5 @@
-from filehandler.api.serializers.ticket import TicketSerializer
+from filehandler.api.serializers.ticket import TicketDownloadSerializer
 
 __all__ = [
-    "TicketSerializer",
+    "TicketDownloadSerializer",
 ]

@@ -4,15 +4,22 @@ from django.http import HttpResponse
 from django.utils import timezone
 from rest_framework import generics
 
-from filehandler.api.serializers import TicketSerializer
+from filehandler.api.serializers import TicketDownloadSerializer
 from ticket.models import Ticket
 
 
-class TicketCsvDownloaderView(generics.RetrieveAPIView):
-    serializer_class = TicketSerializer
+class TicketCsvDownloaderView(generics.CreateAPIView):
+    serializer_class = TicketDownloadSerializer
 
     def get_queryset(self):
-        return Ticket.objects.filter(status=Ticket.StatusChoices.O.name).all()
+        filters = {}
+        for key, val in self.request.data.items():
+            if key == "status":
+                filters["status"] = val
+            if key == "ticket_ids":
+                filters["id__in"] = val
+
+        return Ticket.objects.filter(**filters).all()
 
     def prepare_response(self):
         """Return the response object ready to stream the csv."""
@@ -33,7 +40,7 @@ class TicketCsvDownloaderView(generics.RetrieveAPIView):
             writer.writerow(row)
         return response
 
-    def get(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         """Return the csv to the user for all non redeemed tickets."""
         qs = self.get_queryset()
         serializer = self.get_serializer(qs, many=True)
