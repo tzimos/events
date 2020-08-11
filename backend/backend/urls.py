@@ -15,7 +15,8 @@ authentication_url_patterns = [
 ]
 api_urlpatterns = [
     path("events/", include("event.api.urls")),
-    path("tickets/", include("ticket.api.urls"))
+    path("tickets/", include("ticket.api.urls")),
+    path("filehandler/", include("filehandler.api.urls"))
 ]
 
 urlpatterns = [
