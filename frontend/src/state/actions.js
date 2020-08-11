@@ -14,3 +14,32 @@ export const stopLoading = () => ({type: types.STOP_LOADING});
 
 // Authentication
 export const userLoggedIn = () => ({type: types.USER_IS_AUTHENTICATED});
+
+// Events
+export const eventsRequested = (paginationUrl = null) => ({
+  type: types.EVENTS_REQUESTED,
+  paginationUrl
+});
+export const eventsLoaded = events => ({type: types.EVENTS_LOADED, events});
+
+// Tickets
+export const eventTicketsRequested = (eventPk = null, paginationUrl = null) => ({
+  type: types.EVENT_TICKETS_REQUESTED,
+  paginationUrl,
+  eventPk,
+});
+export const eventTicketsLoaded = eventTickets => ({
+  type: types.EVENT_TICKETS_LOADED,
+  eventTickets
+});
+export const eventTicketRedeemingRequested = (ticketId) => ({
+  type: types.EVENT_TICKETS_REDEEMING_REQUESTED,
+  ticketId
+});
+export const eventTicketRedeemed = data => ({
+  type: types.EVENT_TICKET_REDEEMED,
+  data
+});
+export const downloadNonRedeemedTicketsRequested = () => ({
+  type: types.NON_REDEEMED_TICKETS_DOWNLOAD_REQUESTED
+})
