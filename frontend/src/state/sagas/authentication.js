@@ -18,6 +18,7 @@ import {
 } from "../actions";
 import apiRequest from "../../lib/apiRequest";
 import {config} from "../../config";
+import history from "../../lib/history";
 
 export function* _logoutUser() {
   const {routePath} = config;

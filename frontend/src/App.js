@@ -22,6 +22,7 @@ import Loading from "./components/Loading";
 import SnackBar from "./components/SnackBar";
 import {MuiPickersUtilsProvider} from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
+import NavBar from "./components/NavBar";
 
 let theme = createMuiTheme({
   palette: {
@@ -62,6 +63,7 @@ class App extends React.PureComponent {
             theme={theme}>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <CssBaseline/>
+              <NavBar/>
               <Router history={history}>
                 <Routes/>
               </Router>
