@@ -7,6 +7,7 @@ import Switch from "react-router-transition-switch";
 import {config} from "../../config";
 import LoginView from "../../views/LoginView";
 import EventsView from "../../views/Events";
+import EventTicketsView from "../../views/EventTickets";
 
 
 class Routes extends React.PureComponent {
@@ -25,6 +26,10 @@ class Routes extends React.PureComponent {
               exact
               path={routePath.events}
               component={EventsView}/>
+            <Route
+              exact
+              path={routePath.eventTickets}
+              component={EventTicketsView}/>
           </Switch>
         </LastLocationProvider>
       </React.Fragment>
