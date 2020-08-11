@@ -19,7 +19,7 @@ class Event(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
 
-    date = models.DateField()
+    date = models.DateTimeField()
 
     created_by = models.ForeignKey(
         User,

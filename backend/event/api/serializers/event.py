@@ -8,7 +8,8 @@ from event.models import Event
 class EventSerializer(serializers.ModelSerializer):
     total_redeemed_tickets = serializers.IntegerField(read_only=True)
     total_tickets = serializers.IntegerField(read_only=True)
-    id = serializers.IntegerField()
+    id = serializers.IntegerField(read_only=True)
+    date = serializers.DateTimeField(format="%Y-%m-%dT%H:%M:%S")
 
     class Meta:
         model = Event
