@@ -1,5 +1,7 @@
 from django.urls import path
+
 from ticket.api.views import (
+    BulkTicketCreateApiView,
     EventTicketsView,
     RedeemTicketApiView,
     TicketDetailApiView,
@@ -19,4 +21,9 @@ urlpatterns = [
         EventTicketsView.as_view(),
         name="event-tickets"
     ),
+    path(
+        "bulk-create/",
+        BulkTicketCreateApiView.as_view(),
+        name="bulk-create-tickets"
+    )
 ]
