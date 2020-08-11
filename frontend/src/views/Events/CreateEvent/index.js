@@ -17,25 +17,14 @@ import {
   handleApiErrors,
 } from "../../../lib/apiUtils";
 import CreateEventForm from "./form";
-import {MuiPickersUtilsProvider} from "@material-ui/pickers";
-import DateFnsUtils from "@date-io/date-fns";
 
 class CreateEvent extends React.PureComponent {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      date: "",
-      initialTickets: "",
-    };
-  }
-
 
   handleSubmit = (values, {setErrors, setSubmitting}) => {
     const {
       startLoading,
       stopLoading,
+      successAction,
       eventsRequested,
       notify,
     } = this.props;
@@ -44,7 +33,6 @@ class CreateEvent extends React.PureComponent {
       api,
       resources
     } = config;
-    const {successAction} = this.props;
     const response = apiRequest.post(api, resources.createEvent, values);
     response
       .then(response => {
