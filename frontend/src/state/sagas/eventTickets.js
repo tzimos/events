@@ -7,7 +7,7 @@ import {
 } from "@redux-saga/core/effects";
 import {
   EVENT_TICKETS_REDEEMING_REQUESTED,
-  EVENT_TICKETS_REQUESTED, NON_REDEEMED_TICKETS_DOWNLOAD_REQUESTED
+  EVENT_TICKETS_REQUESTED, TICKETS_DOWNLOAD_REQUESTED
 } from "../actionTypes";
 import {config} from "../../config";
 import apiRequest from "../../lib/apiRequest";
@@ -80,12 +80,12 @@ export function* _redeemTicket(data) {
 
 }
 
-export function* _nonRedeemedDownloadRequested() {
+export function* ticketsDownloadRequested(data) {
   const {
     api,
     resources
   } = config
-  const response = yield call(apiRequest.get, api, resources.downloadNonRedeemedTickets, null);
+  const response = yield call(apiRequest.post, api, resources.downloadNonRedeemedTickets, data.filters);
   if (response.ok) {
     const responseData = yield response.blob();
     FileSaver.saveAs(responseData, "non_redeemed_tickets.csv")
@@ -100,5 +100,5 @@ export function* _nonRedeemedDownloadRequested() {
 export function* watchEventTickets() {
   yield takeLatest(EVENT_TICKETS_REQUESTED, _eventTicketsRequested);
   yield takeLatest(EVENT_TICKETS_REDEEMING_REQUESTED, _redeemTicket);
-  yield takeLatest(NON_REDEEMED_TICKETS_DOWNLOAD_REQUESTED, _nonRedeemedDownloadRequested);
+  yield takeLatest(TICKETS_DOWNLOAD_REQUESTED, ticketsDownloadRequested);
 }

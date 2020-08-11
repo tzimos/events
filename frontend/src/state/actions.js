@@ -1,9 +1,11 @@
 import * as types from "./actionTypes";
 
 // Notifications
-export const pushNotification = payload => ({
+export const pushNotification = (payload, autoHideDuration=null, snackBarActions=null) => ({
   type: types.PUSH_NOTICICATION,
-  values: payload
+  values: payload,
+  autoHideDuration: autoHideDuration,
+  snackBarActions: snackBarActions,
 });
 export const closeSnackBar = () => ({type: types.CLOSE_SNACKBAR});
 
@@ -43,6 +45,7 @@ export const eventTicketRedeemed = data => ({
   type: types.EVENT_TICKET_REDEEMED,
   data
 });
-export const downloadNonRedeemedTicketsRequested = () => ({
-  type: types.NON_REDEEMED_TICKETS_DOWNLOAD_REQUESTED
+export const downloadTicketsRequested = filters => ({
+  type: types.TICKETS_DOWNLOAD_REQUESTED,
+  filters
 })

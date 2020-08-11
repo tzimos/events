@@ -22,5 +22,6 @@ export const config = {
     eventTickets: "tickets/event/{}/",
     redeemTicket: "tickets/redeem/{}/",
     downloadNonRedeemedTickets: "filehandler/export/non-redeemed-tickets/",
+    bulkCreateTickets: "tickets/bulk-create/",
   }
 }
