@@ -1,6 +1,8 @@
 // Authentication
 export const USER_NOT_AUTHENTICATED = "USER_NOT_AUTHENTICATED";
 export const USER_IS_AUTHENTICATED = "USER_IS_AUTHENTICATED";
+export const REFRESH_JWT = "REFRESH_JWT";
+export const LOGOUT_REQUESTED = "LOGOUT_REQUESTED";
 
 // Loading
 export const START_LOADING = "START_LOADING";

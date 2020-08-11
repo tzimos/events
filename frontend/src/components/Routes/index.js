@@ -8,6 +8,7 @@ import {config} from "../../config";
 import LoginView from "../../views/LoginView";
 import EventsView from "../../views/Events";
 import EventTicketsView from "../../views/EventTickets";
+import withPrivateRoute from "./withPrivateRoute";
 
 
 class Routes extends React.PureComponent {
@@ -25,11 +26,11 @@ class Routes extends React.PureComponent {
             <Route
               exact
               path={routePath.events}
-              component={EventsView}/>
+              component={withPrivateRoute(EventsView)}/>
             <Route
               exact
               path={routePath.eventTickets}
-              component={EventTicketsView}/>
+              component={withPrivateRoute(EventTicketsView)}/>
           </Switch>
         </LastLocationProvider>
       </React.Fragment>

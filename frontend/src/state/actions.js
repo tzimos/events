@@ -14,6 +14,9 @@ export const stopLoading = () => ({type: types.STOP_LOADING});
 
 // Authentication
 export const userLoggedIn = () => ({type: types.USER_IS_AUTHENTICATED});
+export const userLoggedOut = () => ({type: types.USER_NOT_AUTHENTICATED});
+export const refreshJWT = () => ({type: types.REFRESH_JWT});
+export const logoutUser = () => ({type: types.LOGOUT_REQUESTED});
 
 // Events
 export const eventsRequested = (paginationUrl = null) => ({
