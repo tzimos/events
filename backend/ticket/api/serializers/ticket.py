@@ -14,3 +14,8 @@ class TicketSerializer(serializers.ModelSerializer):
             "status"
         ]
         depth = 1
+
+    def save(self, **kwargs):
+        self.instance.status = Ticket.StatusChoices.R.name
+        self.instance.save()
+        return self.instance
