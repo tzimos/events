@@ -7,7 +7,7 @@ import {toUnderScore} from "./formatting";
 const getDefaultHeaders = () => {
   const token = localStorage.getItem(config.JWToken);
   return {
-    Authorization: token ? `JWT ${token}` : "",
+    Authorization: token ? `Bearer ${token}` : "",
   };
 };
 

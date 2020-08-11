@@ -1,4 +1,5 @@
 import _ from "lodash";
+import moment from "moment";
 
 export const toUnderScore = (obj) => {
   if (obj === undefined || obj === null) {
@@ -9,3 +10,8 @@ export const toUnderScore = (obj) => {
     {}
   );
 };
+
+export const formatDate = dateString => {
+  const parsedDate = moment(dateString);
+  return parsedDate.format("YYYY/MM/DD HH:mm:ss")
+}
