@@ -2,6 +2,7 @@ import "isomorphic-fetch";
 import {config} from "../config";
 import {encodeGetParams} from "./urlParams";
 import {toUnderScore} from "./formatting";
+import history from "./history";
 
 
 const getDefaultHeaders = () => {
@@ -18,8 +19,12 @@ const getDefaultHeaders = () => {
  * @param _payload
  */
 const apiRequest = (api, query, options = {}, _payload) => {
+  const {
+    HOST,
+    routePath
+  } = config
   const apiRoot = api ? api + "/" : "";
-  const host = config.HOST;
+  const host = HOST;
   let body;
   if (_payload) {
     let extra = {...JSON.parse(_payload)};
@@ -32,7 +37,14 @@ const apiRequest = (api, query, options = {}, _payload) => {
   }
 
   let requestOptions = body ? {...options, body} : options;
-  return fetch(`${host}/${apiRoot}${resource}`, {...requestOptions});
+  const response =  fetch(`${host}/${apiRoot}${resource}`, {...requestOptions});
+  response.then(
+    res => {
+      if (res.status === 401) {
+        history.push(routePath.login)
+      }
+  })
+  return response;
 };
 
 const get = (api, query, urlParams = {}) => {
