@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import {actionStyles} from "../common/eventsAndTicketsStyles";
 import {
-  downloadNonRedeemedTicketsRequested,
+  downloadTicketsRequested,
   eventsRequested,
   pushNotification,
   startLoading,
@@ -44,7 +44,7 @@ class EventsActions extends React.PureComponent {
             Refresh
           </Button>
           <Button
-            onClick={() => this.props.downloadNonRedeemedTicketsRequested()}>
+            onClick={() => this.props.downloadTicketsRequested({status: "O"})}>
             Download non redeemed Tickets
           </Button>
           <Button
@@ -75,7 +75,7 @@ const mapDispatchToProps = dispatch => ({
   stopLoading: () => dispatch(stopLoading()),
   eventsRequested: () => dispatch(eventsRequested()),
   notify: payload => dispatch(pushNotification(payload)),
-  downloadNonRedeemedTicketsRequested: () => dispatch(downloadNonRedeemedTicketsRequested()),
+  downloadTicketsRequested: filters => dispatch(downloadTicketsRequested(filters)),
 });
 
 export default withStyles(actionStyles)(connect(null, mapDispatchToProps)(EventsActions));
