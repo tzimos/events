@@ -44,6 +44,7 @@ class LoginView extends React.PureComponent {
     startLoading();
     const {api, resources, routePath} = config;
     const response = apiRequest.post(api, resources.getToken, values);
+    // eslint-disable-next-line promise/catch-or-return
     response
       .then(response => response.json())
       .then(data => {
@@ -58,8 +59,8 @@ class LoginView extends React.PureComponent {
       })
       .catch(e => handleUnexpectedError(notify))
       .finally(() => {
-        stopLoading()
-      })
+        stopLoading();
+      });
   }
 
   render() {
@@ -81,7 +82,7 @@ class LoginView extends React.PureComponent {
           />
         </div>
       </React.Fragment>
-    )
+    );
   }
 }
 

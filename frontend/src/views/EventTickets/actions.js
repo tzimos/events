@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {
   Button,
@@ -8,12 +9,13 @@ import {
   withStyles
 } from "@material-ui/core";
 import history from "../../lib/history";
-import {actionStyles} from "../common/eventsAndTicketsStyles";
+import {
+  actionStyles
+} from "../common/eventsAndTicketsStyles";
 import {config} from "../../config";
 import {
   pushNotification,
 } from "../../state/actions";
-import CreateEvent from "../Events/CreateEvent";
 import TicketCreate from "./TicketCreate";
 
 
@@ -22,7 +24,7 @@ class EventTicketsActions extends React.PureComponent {
     super(props);
     this.state = {
       dialogIsOpen: false
-    }
+    };
   }
 
   handleOpenDialog = () => this.setState({dialogIsOpen: true})
@@ -64,9 +66,15 @@ class EventTicketsActions extends React.PureComponent {
           </DialogContent>
         </Dialog>
       </React.Fragment>
-    )
+    );
   }
 }
+
+EventTicketsActions.propTypes = {
+  classes: PropTypes.object,
+  messages: PropTypes.object,
+  notify: PropTypes.func,
+};
 
 const mapDispatchToProps = dispatch => ({
   notify: payload => dispatch(pushNotification(payload)),

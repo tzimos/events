@@ -10,8 +10,8 @@ const dotEnvPlugin = new Dotenv({
 });
 
 const htmlPlugin = new HtmlWebpackPlugin({
-      template: path.join(__dirname, "../src/index.html"),
-    })
+  template: path.join(__dirname, "../src/index.html"),
+});
 
 module.exports = merge(base, {
   plugins: [

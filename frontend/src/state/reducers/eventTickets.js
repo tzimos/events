@@ -11,7 +11,7 @@ const eventsTicketsInitialState = {
     previous: undefined,
     results: [],
   },
-}
+};
 
 const eventTickets = (state = eventsTicketsInitialState, action) => {
   switch (action.type) {
@@ -22,7 +22,7 @@ const eventTickets = (state = eventsTicketsInitialState, action) => {
       const results = clonedEventTickets.results;
       const data =  action.data;
       results.find(result => result.id === data.id).status = data.status;
-      return {...state, eventTickets: clonedEventTickets}
+      return {...state, eventTickets: clonedEventTickets};
     default:
       return state;
   }

@@ -14,4 +14,4 @@ export const getTableCell = (row, cell, props) => {
     }
   }
   return React.createElement(cell, props, null);
-}
+};

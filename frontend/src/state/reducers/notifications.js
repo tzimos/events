@@ -3,7 +3,7 @@ import {
   CLOSE_SNACKBAR
 } from "../actionTypes";
 
-const DEFAULT_DURATION = 5000
+const DEFAULT_DURATION = 5000;
 const notificationsInitialState = {
   status: "",
   message: "",

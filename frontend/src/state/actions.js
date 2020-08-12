@@ -48,4 +48,4 @@ export const eventTicketRedeemed = data => ({
 export const downloadTicketsRequested = filters => ({
   type: types.TICKETS_DOWNLOAD_REQUESTED,
   filters
-})
+});

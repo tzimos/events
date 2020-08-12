@@ -22,7 +22,7 @@ class TicketCreate extends React.PureComponent {
     super(props);
     this.state = {
       newCreatedTicketIds: []
-    }
+    };
   }
 
   downloadNewTickets = () => this.props.downloadTicketsRequested({ticketIds: this.state.newCreatedTicketIds})
@@ -34,7 +34,7 @@ class TicketCreate extends React.PureComponent {
         onClick={this.downloadNewTickets}>
         Download in CSV
       </Button>
-    ]
+    ];
   }
 
   handleSubmit = (values, {setErrors, setSubmitting}) => {
@@ -67,7 +67,7 @@ class TicketCreate extends React.PureComponent {
           status: "success",
           message: `${createdLen} ${tickets} created successfully.`
         };
-        this.setState({newCreatedTicketIds: data.createdTicketIds})
+        this.setState({newCreatedTicketIds: data.createdTicketIds});
         successAction();
         eventTicketsRequested(values.eventId);
         notify(msgArgs, 30000, this.getTicketDownloadBtn());
@@ -77,8 +77,8 @@ class TicketCreate extends React.PureComponent {
         setSubmitting(false);
       })
       .finally(() => {
-        stopLoading()
-      })
+        stopLoading();
+      });
   }
 
   render() {

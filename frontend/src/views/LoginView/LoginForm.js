@@ -89,7 +89,7 @@ class LoginForm extends React.PureComponent {
           </ul>
         </Form>
       </React.Fragment>
-    )
+    );
   }
 }
 
@@ -103,6 +103,7 @@ LoginForm.propTypes = {
   dirty: PropTypes.bool,
   isValid: PropTypes.bool,
   isSubmitting: PropTypes.bool,
+  initialValues: PropTypes.object,
 };
 
 export default withStyles(formStyles)(LoginForm);

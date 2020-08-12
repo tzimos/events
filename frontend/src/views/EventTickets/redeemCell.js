@@ -2,13 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import Icon from "@material-ui/core/Icon";
-import DoneIcon from '@material-ui/icons/Done';
+import DoneIcon from "@material-ui/icons/Done";
 import {
   eventTicketRedeemingRequested
 } from "../../state/actions";
 
 class RedeemCell extends React.PureComponent {
-  onIconCLick = e => {
+  onIconCLick = () => {
     const {row, eventTicketRedeemingRequested} = this.props;
     eventTicketRedeemingRequested(row.id);
   }
@@ -24,7 +24,7 @@ class RedeemCell extends React.PureComponent {
           : <DoneIcon/>
         }
       </React.Fragment>
-    )
+    );
   }
 }
 

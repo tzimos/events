@@ -5,7 +5,7 @@ import {
 
 const authenticationInitialState = {
   isAuthenticated: false,
-}
+};
 
 const authentication = (state = authenticationInitialState, action) => {
   switch (action.type) {

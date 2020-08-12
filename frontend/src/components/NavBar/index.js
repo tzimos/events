@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {
   AppBar,
@@ -16,7 +17,8 @@ class NavBar extends React.PureComponent {
     const {
       classes,
       isAuthenticated,
-      logoutUser} = this.props;
+      logoutUser
+    } = this.props;
     return (
       <div className={classes.root}>
         <AppBar position="static">
@@ -35,6 +37,11 @@ class NavBar extends React.PureComponent {
     );
   }
 }
+NavBar.propTypes = {
+  classes: PropTypes.object,
+  isAuthenticated: PropTypes.bool,
+  logoutUser: PropTypes.func,
+};
 
 const mapStateToProps = state => ({
   isAuthenticated: state.authentication.isAuthenticated,

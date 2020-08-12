@@ -62,5 +62,5 @@ export function* watchAuthentication() {
   yield all([
     takeLatest(REFRESH_JWT, checkAuthenticationOrRefreshJWT),
     takeLatest(LOGOUT_REQUESTED, _logoutUser),
-  ])
+  ]);
 }

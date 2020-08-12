@@ -1,8 +1,9 @@
 import React from "react";
-import {connect} from "react-redux"
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
 import {Helmet} from "react-helmet";
 import {config} from "../../config";
-import {eventsRequested} from "../../state/actions";
+import {eventsRequested, eventTicketsRequested} from "../../state/actions";
 import BaseTable from "../../components/Table";
 import history from "../../lib/history";
 import {Typography, withStyles} from "@material-ui/core";
@@ -16,7 +17,7 @@ const columns = [
   "Initial numbers",
   "Total tickets",
   "Total tickets redeemed",
-]
+];
 
 const cellMapping = [
   "name",
@@ -24,7 +25,7 @@ const cellMapping = [
   "initialTickets",
   "totalTickets",
   "totalRedeemedTickets",
-]
+];
 
 
 class EventsView extends React.PureComponent {
@@ -58,21 +59,29 @@ class EventsView extends React.PureComponent {
               <div className={classes.createEventWrapper}>
                 <CreateEvent successAction={() => {}}/>
               </div>
-            : <BaseTable
-              rowId={"id"}
-              disableRowClick={false}
-              onRowClick={eventPk => history.push(routePath.eventTickets, {eventPk: eventPk})}
-              columns={columns}
-              cellMapping={cellMapping}
-              getDatasource={eventsRequested}
-              attachActions={(props) => <EventsActions {...props}/>}
-              messages={events}/>}
+              : <BaseTable
+                rowId={"id"}
+                disableRowClick={false}
+                onRowClick={eventPk => history.push(routePath.eventTickets, {eventPk: eventPk})}
+                columns={columns}
+                cellMapping={cellMapping}
+                getDatasource={eventsRequested}
+                attachActions={(props) => <EventsActions {...props}/>}
+                messages={events}/>}
           </div>
         </div>
       </React.Fragment>
-    )
+    );
   }
 }
+
+EventsView.propTypes = {
+  classes: PropTypes.object,
+  events: PropTypes.object,
+  eventsRequested: PropTypes.func,
+  eventTicketsRequested: PropTypes.func,
+
+};
 
 const mapStateToProps = state => ({
   events: state.events.events,

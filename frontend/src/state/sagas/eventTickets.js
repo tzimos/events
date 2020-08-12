@@ -27,7 +27,7 @@ export function* _eventTicketsRequested(data) {
   const {api, resources} = config;
   let paginationParams = data.paginationUrl ? data.paginationUrl.split("?")[1] : "";
   let eventPk = data.eventPk ? data.eventPk : yield select(eventPkForTickets);
-  const baseUrl = format(resources.eventTickets, eventPk)
+  const baseUrl = format(resources.eventTickets, eventPk);
   const resource = paginationParams ? baseUrl + "?" + paginationParams : baseUrl;
   try {
     const response = yield call(apiRequest.get, api, resource, null);
@@ -62,8 +62,8 @@ export function* _redeemTicket(data) {
       const notificationPayload = {
         status: "success",
         message: `Successfully redeemed the ticket with id ${responseData.id} for event ${responseData.event.name}`
-      }
-      yield put(pushNotification(notificationPayload))
+      };
+      yield put(pushNotification(notificationPayload));
     } else {
       yield put(pushNotification({
         status: "error",
@@ -84,11 +84,11 @@ export function* ticketsDownloadRequested(data) {
   const {
     api,
     resources
-  } = config
+  } = config;
   const response = yield call(apiRequest.post, api, resources.downloadNonRedeemedTickets, data.filters);
   if (response.ok) {
     const responseData = yield response.blob();
-    FileSaver.saveAs(responseData, "non_redeemed_tickets.csv")
+    FileSaver.saveAs(responseData, "non_redeemed_tickets.csv");
   } else {
     yield put(pushNotification({
       status: "error",

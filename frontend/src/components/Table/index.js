@@ -14,7 +14,7 @@ import {
 import TablePaginationActions from "./tablePaginationActions";
 import {getTableCell} from "../../lib/tableUtils";
 
-const rowsPerPageOptions = [10, 20, 30]
+const rowsPerPageOptions = [10, 20, 30];
 
 class BaseTable extends React.PureComponent {
   constructor(props) {
@@ -22,7 +22,7 @@ class BaseTable extends React.PureComponent {
     this.state = {
       currentPage: 0,
       rowsPerPage: rowsPerPageOptions[0],
-    }
+    };
   }
 
   handleChangeRowsPerPage = e => this.setState({rowsPerPage: e.target.value})
@@ -34,7 +34,7 @@ class BaseTable extends React.PureComponent {
     const paginationUrl = action === "previous" ? messages.previous : messages.next;
     getDatasource(paginationUrl);
     this.setState(state => {
-      return {...state, currentPage: newPage}
+      return {...state, currentPage: newPage};
     });
   }
 
@@ -47,7 +47,7 @@ class BaseTable extends React.PureComponent {
       return;
     }
     if (typeof onRowClick === "function") {
-      onRowClick(rowId)
+      onRowClick(rowId);
     }
   }
 
@@ -80,7 +80,7 @@ class BaseTable extends React.PureComponent {
               </TableRow>
             </TableHead>
             <TableBody>
-              {results.map((row, rowIndex) => (
+              {results.map(row => (
                 <TableRow
                   hover
                   onClick={(event) => this.handleClick(event, row[rowId])}
@@ -118,7 +118,7 @@ class BaseTable extends React.PureComponent {
           {attachActions && attachActions({...this.props, ...this.state})}
         </div>
       </React.Fragment>
-    )
+    );
   }
 }
 
@@ -128,6 +128,9 @@ BaseTable.propTypes = {
   cellMapping: PropTypes.array.isRequired,
   rowId: PropTypes.string.isRequired,
   attachActions: PropTypes.func,
+  onRowClick: PropTypes.func,
+  disableRowClick: PropTypes.func,
+  getDatasource: PropTypes.func,
 };
 
 export default BaseTable;

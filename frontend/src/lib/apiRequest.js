@@ -22,7 +22,7 @@ const apiRequest = (api, query, options = {}, _payload) => {
   const {
     HOST,
     routePath
-  } = config
+  } = config;
   const apiRoot = api ? api + "/" : "";
   const host = HOST;
   let body;
@@ -41,9 +41,9 @@ const apiRequest = (api, query, options = {}, _payload) => {
   response.then(
     res => {
       if (res.status === 401) {
-        history.push(routePath.login)
+        history.push(routePath.login);
       }
-  })
+    });
   return response;
 };
 

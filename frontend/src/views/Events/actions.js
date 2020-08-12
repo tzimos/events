@@ -1,19 +1,18 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {
   Button,
   withStyles,
   Dialog,
   DialogTitle,
-  DialogContent, Typography,
+  DialogContent,
+  Typography,
 } from "@material-ui/core";
 import {actionStyles} from "../common/eventsAndTicketsStyles";
 import {
   downloadTicketsRequested,
   eventsRequested,
-  pushNotification,
-  startLoading,
-  stopLoading,
 } from "../../state/actions";
 import CreateEvent from "./CreateEvent";
 
@@ -23,7 +22,7 @@ class EventsActions extends React.PureComponent {
     super(props);
     this.state = {
       dialogIsOpen: false
-    }
+    };
   }
 
   handleOpenDialog = () => this.setState({dialogIsOpen: true})
@@ -32,6 +31,8 @@ class EventsActions extends React.PureComponent {
   render() {
     const {
       classes,
+      eventsRequested,
+      downloadTicketsRequested,
     } = this.props;
     const {
       dialogIsOpen
@@ -40,11 +41,11 @@ class EventsActions extends React.PureComponent {
       <React.Fragment>
         <div className={classes.buttons}>
           <Button
-            onClick={() => this.props.eventsRequested()}>
+            onClick={() => eventsRequested()}>
             Refresh
           </Button>
           <Button
-            onClick={() => this.props.downloadTicketsRequested({status: "O"})}>
+            onClick={() => downloadTicketsRequested({status: "O"})}>
             Download non redeemed Tickets
           </Button>
           <Button
@@ -66,15 +67,18 @@ class EventsActions extends React.PureComponent {
           </DialogContent>
         </Dialog>
       </React.Fragment>
-    )
+    );
   }
 }
 
+EventsActions.propTypes = {
+  classes: PropTypes.object,
+  eventsRequested: PropTypes.func,
+  downloadTicketsRequested: PropTypes.func,
+};
+
 const mapDispatchToProps = dispatch => ({
-  startLoading: () => dispatch(startLoading()),
-  stopLoading: () => dispatch(stopLoading()),
   eventsRequested: () => dispatch(eventsRequested()),
-  notify: payload => dispatch(pushNotification(payload)),
   downloadTicketsRequested: filters => dispatch(downloadTicketsRequested(filters)),
 });
 

@@ -23,4 +23,4 @@ export const config = {
     downloadNonRedeemedTickets: "filehandler/export/non-redeemed-tickets/",
     bulkCreateTickets: "tickets/bulk-create/",
   }
-}
+};

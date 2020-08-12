@@ -73,7 +73,7 @@ class App extends React.PureComponent {
           </MuiThemeProvider>
         </JssProvider>
       </React.Fragment>
-    )
+    );
   }
 }
 

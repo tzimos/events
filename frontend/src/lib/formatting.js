@@ -6,15 +6,15 @@ export const toUnderScore = (obj) => {
     return;
   }
   return Object.keys(obj).reduce((o, key) =>
-      Object.assign(o, {[_.snakeCase(key)]: obj[key]}),
-    {}
+    Object.assign(o, {[_.snakeCase(key)]: obj[key]}),
+  {}
   );
 };
 
 export const formatDate = dateString => {
   const parsedDate = moment(dateString);
-  return parsedDate.format("YYYY/MM/DD HH:mm:ss")
-}
+  return parsedDate.format("YYYY/MM/DD HH:mm:ss");
+};
 
 export const splitAndCapitalize = value => {
   return value

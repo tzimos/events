@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   Field,
   Form
@@ -6,9 +7,13 @@ import {
 import {
   TextField
 } from "formik-material-ui";
-import {KeyboardDateTimePicker} from "@material-ui/pickers";
-import Button from "@material-ui/core/Button";
-import {withStyles} from "@material-ui/core";
+import {
+  KeyboardDateTimePicker
+} from "@material-ui/pickers";
+import {
+  Button,
+  withStyles
+} from "@material-ui/core";
 import {formStyles} from "./styles";
 
 
@@ -97,8 +102,22 @@ class CreateEventForm extends React.PureComponent {
           </div>
         </Form>
       </React.Fragment>
-    )
+    );
   }
 }
+
+
+CreateEventForm.propTypes = {
+  classes: PropTypes.object,
+  values: PropTypes.object,
+  touched: PropTypes.bool,
+  errors: PropTypes.object,
+  handleChange: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  setFieldValue: PropTypes.func,
+  setFieldTouched: PropTypes.func,
+  isValid: PropTypes.bool,
+};
+
 
 export default withStyles(formStyles)(CreateEventForm);

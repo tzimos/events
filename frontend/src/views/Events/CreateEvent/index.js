@@ -34,6 +34,7 @@ class CreateEvent extends React.PureComponent {
       resources
     } = config;
     const response = apiRequest.post(api, resources.createEvent, values);
+    // eslint-disable-next-line promise/catch-or-return
     response
       .then(response => {
         if (!response.ok) {
@@ -43,7 +44,7 @@ class CreateEvent extends React.PureComponent {
         }
         return response.json();
       })
-      .then(data => {
+      .then(_ => {
         let msgArgs = {
           status: "success",
           message: "Event created successfully."
@@ -57,35 +58,36 @@ class CreateEvent extends React.PureComponent {
         setSubmitting(false);
       })
       .finally(() => {
-        stopLoading()
-      })
+        stopLoading();
+      });
   }
 
   render() {
     const {classes} = this.props;
     return (
-        <React.Fragment>
-          <div className={classes.formWrapper}>
-            <Formik
-              enableReinitialize
-              initialValues={{
-                name: "",
-                date: "",
-                initialTickets: "",
-              }}
-              onSubmit={this.handleSubmit}
-              validationSchema={validationSchema}
-              render={props => <CreateEventForm {...props}/>}
-            />
-          </div>
-        </React.Fragment>
-    )
+      <React.Fragment>
+        <div className={classes.formWrapper}>
+          <Formik
+            enableReinitialize
+            initialValues={{
+              name: "",
+              date: "",
+              initialTickets: "",
+            }}
+            onSubmit={this.handleSubmit}
+            validationSchema={validationSchema}
+            render={props => <CreateEventForm {...props}/>}
+          />
+        </div>
+      </React.Fragment>
+    );
   }
 }
 
 
 CreateEvent.propTypes = {
   startLoading: PropTypes.func,
+  eventsRequested: PropTypes.func,
   stopLoading: PropTypes.func,
   notify: PropTypes.func,
   successAction: PropTypes.func.isRequired,

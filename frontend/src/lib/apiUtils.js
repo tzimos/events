@@ -32,4 +32,4 @@ export const handleUnexpectedError = (notify) => {
     status: "error",
     message: strings.unexpectedError
   });
-}
+};

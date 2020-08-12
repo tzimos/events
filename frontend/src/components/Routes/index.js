@@ -34,7 +34,7 @@ class Routes extends React.PureComponent {
           </Switch>
         </LastLocationProvider>
       </React.Fragment>
-    )
+    );
   }
 }
 

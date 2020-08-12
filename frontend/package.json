@@ -6,6 +6,7 @@
   "author": "Panagiotis Tzimos",
   "license": "MIT",
   "scripts": {
+    "lint": "eslint .",
     "dev": "webpack-dev-server --config webpack/webpack.dev.config.js --mode development --port 8001 --host 0.0.0.0",
     "build": "webpack --config webpack/webpack.prod.config.js",
     "serve": "node server.js"
@@ -25,6 +26,7 @@
     "@material-ui/pickers": "^3.2.5",
     "@material-ui/styles": "^4.3.3",
     "babel-core": "^6.26.3",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-lodash": "^3.3.4",
     "clsx": "^1.1.1",
@@ -33,6 +35,11 @@
     "connect-history-api-fallback": "^1.6.0",
     "date-fns": "^2.15.0",
     "dotenv-webpack": "^2.0.0",
+    "eslint": "^7.6.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-require-path-exists": "^1.1.9",
     "express": "^4.17.1",
     "file-saver": "^2.0.2",
     "formik": "^2.1.5",

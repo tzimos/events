@@ -1,8 +1,12 @@
 import React from "react";
-import {connect} from "react-redux"
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
 import {Helmet} from "react-helmet";
 import {config} from "../../config";
-import {eventTicketsLoaded, eventTicketsRequested} from "../../state/actions";
+import {
+  eventTicketsLoaded,
+  eventTicketsRequested
+} from "../../state/actions";
 import BaseTable from "../../components/Table";
 import {
   Typography,
@@ -17,14 +21,14 @@ const columns = [
   "Status",
   "Event name",
   "Redeem Ticket",
-]
+];
 
 const cellMapping = [
   "id",
   "status",
   "event.name",
   RedeemCell,
-]
+];
 
 
 class EventTicketsView extends React.PureComponent {
@@ -35,7 +39,7 @@ class EventTicketsView extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    this.props.eventTicketsLoaded({})
+    this.props.eventTicketsLoaded({});
   }
 
   render() {
@@ -68,9 +72,16 @@ class EventTicketsView extends React.PureComponent {
           </div>
         </div>
       </React.Fragment>
-    )
+    );
   }
 }
+EventTicketsView.propTypes = {
+  classes: PropTypes.object,
+  history: PropTypes.object,
+  eventTickets: PropTypes.object,
+  eventTicketsRequested: PropTypes.func,
+  eventTicketsLoaded: PropTypes.func,
+};
 
 const mapStateToProps = state => ({
   eventTickets: state.eventTickets.eventTickets,

@@ -7,4 +7,4 @@ export const styles = theme => ({
     marginRight: theme.spacing(2),
     flexGrow: 1,
   }
-})
+});

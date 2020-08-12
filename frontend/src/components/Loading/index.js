@@ -44,7 +44,7 @@ class Loading extends React.PureComponent {
             open={loading}
             className={classes.Dialog}
           ><CircularProgress
-            className={classes.CircularProgress}/>
+              className={classes.CircularProgress}/>
           </Dialog>
         </Fade>
       </>

@@ -9,7 +9,7 @@ const eventsInitialState = {
     previous: undefined,
     results: [],
   },
-}
+};
 const events = (state = eventsInitialState, action) => {
   switch (action.type) {
     case EVENTS_LOADED:
