@@ -1,7 +1,6 @@
 export const config = {
   HOST: process.env.HOST,
   api: process.env.API_BASE_URL,
-  PROXY_HOST: process.env.PROXY_HOST,
   JWToken: "JWToken",
   JWTokenRefreshKey: "JWTokenRefreshKey",
   pageTitle: {
