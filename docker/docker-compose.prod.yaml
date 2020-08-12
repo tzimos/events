@@ -47,7 +47,7 @@ services:
     build:
       context: ../../events
       dockerfile: ./docker/frontend/Dockerfile
-    command: bash -c "cd /code && yarn build && yarn serve"
+    command: bash -c "cd /code && yarn serve"
     networks:
       - main_prod
     expose:

@@ -28,17 +28,10 @@ class EventSerializer(serializers.ModelSerializer):
         attrs = super().validate(attrs)
         pk = attrs.get("id")
         new_tickets = attrs.get("initial_tickets", 0)
-        if pk:
-            event = Event.objects.get(pk=pk)
-        else:
-            event = Event()
-        tickets_count, total_count = event.get_tickets_to_be_created_count(
-            new_tickets
-        )
-        if tickets_count < 0:
+        if new_tickets <= 0:
             raise ValidationError(
                 INVALID_INITIAL_TICKETS.format(
-                    total_tickets_count=total_count
+                    total_tickets_count=new_tickets
                 )
             )
         return attrs

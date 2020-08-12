@@ -33,19 +33,9 @@ class Event(models.Model):
 
     objects = EventTicketsManager.as_manager()
 
-    def get_tickets_to_be_created_count(self, new_tickets):
-        """Create new tickets for the given event."""
-        if not self.pk:
-            return new_tickets, 0
-        total_count = self.tickets.count()
-        return (new_tickets - total_count), total_count
-
     def create_tickets_for_event(self, chosen_ticket_num):
         """Create ticket instances given the """
-        tickets_count, _ = self.get_tickets_to_be_created_count(
-            chosen_ticket_num
-        )
         Ticket.objects.bulk_create([
             Ticket(event=self)
-            for _ in range(tickets_count)
+            for _ in range(chosen_ticket_num)
         ])
