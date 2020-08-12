@@ -6,6 +6,13 @@ export const styles = theme => ({
     alignItems: "center",
   },
   title: {},
+  createEventWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "5em"
+  },
   tableWrapper: {
     width: "90%",
     marginTop: theme.spacing(4),

@@ -33,7 +33,7 @@ class TicketCsvDownloaderView(generics.CreateAPIView):
     def write_csv_in_response(self, serializer):
         """Write the csv content to the response."""
         response = self.prepare_response()
-        header = self.serializer_class.Meta.fields
+        header = self.serializer_class().get_headers()
         writer = csv.DictWriter(response, fieldnames=header)
         writer.writeheader()
         for row in serializer.data:

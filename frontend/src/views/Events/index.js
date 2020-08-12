@@ -8,6 +8,7 @@ import history from "../../lib/history";
 import {Typography, withStyles} from "@material-ui/core";
 import {styles} from "../common/eventsAndTicketsStyles";
 import EventsActions from "./actions";
+import CreateEvent from "./CreateEvent";
 
 const columns = [
   "Name",
@@ -42,7 +43,6 @@ class EventsView extends React.PureComponent {
       eventsRequested,
       classes,
     } = this.props;
-    if (events.count === 0) return null;
 
     return (
       <React.Fragment>
@@ -54,7 +54,11 @@ class EventsView extends React.PureComponent {
             Events
           </Typography>
           <div className={classes.tableWrapper}>
-            <BaseTable
+            {events.count === 0 ?
+              <div className={classes.createEventWrapper}>
+                <CreateEvent successAction={() => {}}/>
+              </div>
+            : <BaseTable
               rowId={"id"}
               disableRowClick={false}
               onRowClick={eventPk => history.push(routePath.eventTickets, {eventPk: eventPk})}
@@ -62,7 +66,7 @@ class EventsView extends React.PureComponent {
               cellMapping={cellMapping}
               getDatasource={eventsRequested}
               attachActions={(props) => <EventsActions {...props}/>}
-              messages={events}/>
+              messages={events}/>}
           </div>
         </div>
       </React.Fragment>
