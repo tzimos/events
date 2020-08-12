@@ -63,6 +63,8 @@ SnackBar.propTypes = {
   open: PropTypes.bool,
   classes: PropTypes.object,
   action: PropTypes.array,
+  autoHideDuration: PropTypes.number,
+  snackBarActions: PropTypes.array,
 };
 
 const mapStateToProps = ({notifications}) => ({

@@ -38,6 +38,7 @@ const apiRequest = (api, query, options = {}, _payload) => {
 
   let requestOptions = body ? {...options, body} : options;
   const response =  fetch(`${host}/${apiRoot}${resource}`, {...requestOptions});
+  // eslint-disable-next-line promise/catch-or-return
   response.then(
     res => {
       if (res.status === 401) {

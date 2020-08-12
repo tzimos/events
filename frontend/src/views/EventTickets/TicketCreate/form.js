@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   Field,
   Form
@@ -57,5 +58,16 @@ class TicketCreateForm extends React.PureComponent {
   }
 
 }
+
+TicketCreateForm.propTypes = {
+  classes: PropTypes.object,
+  values: PropTypes.object,
+  touched: PropTypes.bool,
+  isValid: PropTypes.bool,
+  initialValues: PropTypes.object,
+  errors: PropTypes.object,
+  handleChange: PropTypes.func,
+  handleSubmit: PropTypes.func,
+};
 
 export default withStyles(styles)(TicketCreateForm);

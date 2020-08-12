@@ -8,9 +8,11 @@ import {config} from "../../config";
 import apiRequest from "../../lib/apiRequest";
 import {
   eventsLoaded,
+  pushNotification,
   startLoading,
   stopLoading
 } from "../actions";
+import {strings} from "../../strings";
 
 
 export function* _eventsRequested(data) {
@@ -24,7 +26,11 @@ export function* _eventsRequested(data) {
     if (response.ok) {
       yield put(eventsLoaded(data));
     }
-  } catch (e) {
+  } catch (_) {
+    yield put(pushNotification({
+      status: "error",
+      message: strings.unexpectedError
+    }));
   }
   yield put(stopLoading());
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
 import {
   KeyboardArrowLeft,
@@ -43,5 +44,12 @@ class TablePaginationActions extends React.PureComponent {
     );
   }
 }
+
+TablePaginationActions.propTypes = {
+  page: PropTypes.number,
+  onChangePage: PropTypes.func,
+  count: PropTypes.number,
+  rowsPerPage: PropTypes.number,
+};
 
 export default TablePaginationActions;

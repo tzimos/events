@@ -17,7 +17,6 @@ class ShowPasswordIcon extends React.PureComponent {
     const {
       showPassword,
       classes,
-      t,
       toggleShowPassword,
     } = this.props;
     return (

@@ -1,11 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {Formik} from "formik";
 import {validationSchema} from "./validationSchema";
 import TicketCreateForm from "./form";
 import {config} from "../../../config";
 import apiRequest from "../../../lib/apiRequest";
 import {handleApiErrors} from "../../../lib/apiUtils";
-import PropTypes from "prop-types";
 import {
   downloadTicketsRequested,
   eventsRequested,
@@ -51,9 +51,10 @@ class TicketCreate extends React.PureComponent {
       resources
     } = config;
     const response = apiRequest.post(api, resources.bulkCreateTickets, values);
-    response
+    return response
       .then(response => {
         if (!response.ok) {
+          // eslint-disable-next-line promise/no-nesting
           return response.text().then(data => {
             throw new Error(data);
           });
@@ -105,7 +106,10 @@ class TicketCreate extends React.PureComponent {
 TicketCreate.propTypes = {
   startLoading: PropTypes.func,
   stopLoading: PropTypes.func,
+  eventTicketsRequested: PropTypes.func,
+  downloadTicketsRequested: PropTypes.func,
   notify: PropTypes.func,
+  eventId: PropTypes.string,
   successAction: PropTypes.func.isRequired,
 };
 

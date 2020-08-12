@@ -57,7 +57,7 @@ class LoginView extends React.PureComponent {
           setSubmitting(false);
         }
       })
-      .catch(e => handleUnexpectedError(notify))
+      .catch(() => handleUnexpectedError(notify))
       .finally(() => {
         stopLoading();
       });

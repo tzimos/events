@@ -38,6 +38,7 @@ class CreateEvent extends React.PureComponent {
     response
       .then(response => {
         if (!response.ok) {
+          // eslint-disable-next-line promise/no-nesting
           return response.text().then(data => {
             throw new Error(data);
           });

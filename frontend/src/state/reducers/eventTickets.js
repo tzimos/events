@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import _ from "lodash";
 import {
   EVENT_TICKET_REDEEMED,
