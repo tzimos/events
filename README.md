@@ -1,3 +1,7 @@
+# Author
+* Full name: Panagiotis Tzimos   
+* Email: tzimoss@gmail.com
+   
 # Events Management Project
 *This is a demo events management project written in Django, React and powered by docker.*
 
