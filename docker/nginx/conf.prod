@@ -36,6 +36,11 @@ server {
         proxy_pass http://backend_prod/admin/;
     }
 
+    location /static/ {
+        autoindex on;
+        alias /staticfiles/;
+    }
+
     location / {
         proxy_pass http://frontend_prod/;
     }

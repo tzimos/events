@@ -97,7 +97,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = "/static/"
 
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS":
@@ -116,3 +115,6 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     )
 }
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+STATIC_URL = "/static/"

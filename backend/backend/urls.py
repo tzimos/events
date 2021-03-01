@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import (
     include,
     path,
@@ -22,8 +23,11 @@ api_urlpatterns = [
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include(api_urlpatterns)),
-    path("api/token/", include(authentication_url_patterns))
+    path("api/token/", include(authentication_url_patterns)),
 ]
+
+if not settings.DEBUG:
+    urlpatterns += staticfiles_urlpatterns()
 
 if settings.DEBUG:
     import debug_toolbar

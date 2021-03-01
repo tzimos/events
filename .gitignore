@@ -6,3 +6,5 @@ frontend/yarn-error.log
 db_data/
 frontend/node_modules/
 frontend/npm-debug.log
+venv/
+/docker/nginx/staticfiles/
