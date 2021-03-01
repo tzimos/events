@@ -42,3 +42,7 @@ At the root directory:
 Wait a little bit and visit http://localhost:8000.   
 If you want to visit django admin go to http://localhost:8000/admin/.
 
+
+USERNAME: admin
+PASSWORD: password
+
